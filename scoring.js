@@ -4,12 +4,17 @@
 let scoreboard = []
 
 //list of functions
-//function that calculates score each frame accounting for spares and strikes
 
-const calculateScore = () => {
+
+const calculateTotalScore = () => {
 
 }
 
+//function that calculates score each frame accounting for spares and strikes
+
+const calculateFrameScore = () => {
+
+}
 //function that 'bowls' a random number between 0 and 10 & adds it to scoreboard
 
 const bowl = () => {
@@ -17,7 +22,7 @@ const bowl = () => {
   return Math.floor(Math.random()*11)
 }
 //function that adds pinScore to frame
-const pinScore = () => {
+const bowlAFrame = () => {
   //create currentFrame
   let frame = []
   //invoke bowl function to see how many pins were knocked down in first bowl
@@ -27,13 +32,22 @@ const pinScore = () => {
   //push first bowl to frame
   frame.push(firstBowl)
   if (remainingPins) {
-    let secondBowl = Math.abs(remainingPins - bowl())
+    let secondBowlMax = remainingPins + 1
+    //Array.from({length: remainingPins+1}, (v,i)=> i)
+    let secondBowl = Math.floor(Math.random()*secondBowlMax)
     frame.push(secondBowl)
   }
   else {frame.push(0)}
   scoreboard.push(frame)
 }
-
+//play a game
+const playAGame = () => {
+  let frame = 1
+  while (frame < 11) {
+    bowlAFrame()
+    frame++
+  }
+}
 //function that identifies when the game is over
 
 const checkGameEnd = () => {
@@ -43,7 +57,9 @@ const checkGameEnd = () => {
 module.exports = {
   Bowl: bowl,
   Scoreboard: scoreboard,
-  CalculateScore: calculateScore,
+  CalculateTotalScore: calculateTotalScore,
   CheckGameEnd: checkGameEnd,
-  PinScore: pinScore
+  BowlAFrame: bowlAFrame,
+  CalculateFrameScore: calculateFrameScore,
+  PlayAGame: playAGame
 }
