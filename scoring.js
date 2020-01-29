@@ -21,3 +21,5 @@ const bowl = () => {
 const checkGameEnd = () => {
 
 }
+
+exports.modules = bowl
