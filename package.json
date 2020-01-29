@@ -1,0 +1,24 @@
+{
+  "name": "bowling",
+  "version": "1.0.0",
+  "description": "creating app to simulate bowling scoring",
+  "main": "scoring.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikkelrev22/bowling.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikkelrev22/bowling/issues"
+  },
+  "homepage": "https://github.com/mikkelrev22/bowling#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "express": "^4.17.1"
+  }
+}
