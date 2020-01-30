@@ -12,8 +12,8 @@ const calculateTotalScore = () => {
 
 //function that calculates score each frame accounting for spares and strikes
 
-const calculateFrameScore = () => {
-
+const calculateFrameScore = (frame) => {
+  if(frame[0]+frame[1]===10) frame.push(10)
 }
 //function that 'bowls' a random number between 0 and 10 & adds it to scoreboard
 
@@ -38,6 +38,7 @@ const bowlAFrame = () => {
     frame.push(secondBowl)
   }
   else {frame.push(0)}
+  calculateFrameScore(frame)
   scoreboard.push(frame)
 }
 //play a game
@@ -47,7 +48,9 @@ const playAGame = () => {
     bowlAFrame()
     frame++
   }
+  console.log(scoreboard)
 }
+playAGame()
 //function that identifies when the game is over
 
 const checkGameEnd = () => {
