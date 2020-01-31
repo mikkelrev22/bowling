@@ -5,17 +5,19 @@ let scoreboard = []
 let score = 0
 //list of functions
 
-
 const calculateTotalScore = (scoreboard) => {
   for (let i = 2; i <= scoreboard.length; i++) {
+    // scoring for a spare
     if (scoreboard[i-2][2] === '/') {
       scoreboard[i-2][2] = 10 + scoreboard[i-1][0]
       score += scoreboard[i-2][2]
     }
+    // scoring for a lone strike
     if (scoreboard[i-2][2] === 'X' && scoreboard[i-1][2] !== 'X') {
       scoreboard[i-2][2] = 10 + scoreboard[i-1][0] + scoreboard[i-1][1]
       score += scoreboard[i-2][2]
     }
+    // fix this function; it is not necessarily 30
     if (scoreboard[i-2][2] === 'X' && scoreboard[i-1][2] === 'X') {
       scoreboard[i-2][2] = 30
       score += scoreboard[i-2][2]
