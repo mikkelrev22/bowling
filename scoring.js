@@ -96,7 +96,7 @@ const bowlAFrame = () => {
   calculateTotalScore(scoreboard)
 }
 //play a game
-const playAGame = () => {
+exports.playAGame = () => {
   let frame = 1
   while (frame < 11) {
     bowlAFrame()
@@ -105,13 +105,13 @@ const playAGame = () => {
   }
   return score
 }
-playAGame()
+// playAGame()
 
-module.exports = {
-  Bowl: bowl,
-  Scoreboard: scoreboard,
-  CalculateTotalScore: calculateTotalScore,
-  BowlAFrame: bowlAFrame,
-  CalculateFrameScore: calculateFrameScore,
-  PlayAGame: playAGame
-}
+// module.exports = {
+//   Bowl: bowl,
+//   Scoreboard: scoreboard,
+//   CalculateTotalScore: calculateTotalScore,
+//   BowlAFrame: bowlAFrame,
+//   CalculateFrameScore: calculateFrameScore,
+//   PlayAGame: playAGame
+// }

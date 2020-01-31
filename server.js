@@ -1,18 +1,19 @@
 const express = require('express')
 const app = express()
 const port = 7666
-const { PlayAGame } = require('./scoring.js')
+const Bowl = require('./scoring.js')
 
-app.get('/', (err, req, res, next)=>{
-  PlayAGame()
+app.get('/', (req, res)=>{
+  console.log(Bowl.playAGame())
+  res.send(Bowl.playAGame())
 })
 
 app.use((err, req, res, next)=>{
-  res.setStatus(404)
+  res.sendStatus(404)
 })
 
 app.use((err, req, res, next)=>{
-  res.setStatus(500).errstack(err)
+  res.sendStatus(500).send(err.stack)
 })
 
 app.listen(port, ()=>{
