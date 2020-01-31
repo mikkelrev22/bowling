@@ -2,18 +2,38 @@
 //array that is the scoreboard
 
 let scoreboard = []
-
+let score = 0
 //list of functions
 
 
-const calculateTotalScore = () => {
-
+const calculateTotalScore = (scoreboard) => {
+  for (let i = 2; i <= scoreboard.length; i++) {
+    if (scoreboard[i-2][2] === '/') {
+      scoreboard[i-2][2] = 10 + scoreboard[i-1][0]
+      score += scoreboard[i-2][2]
+    }
+    if (scoreboard[i-2][2] === 'X' && scoreboard[i-1][2] !== 'X') {
+      scoreboard[i-2][2] = 10 + scoreboard[i-1][0] + scoreboard[i-1][1]
+      score += scoreboard[i-2][2]
+    }
+    if (scoreboard[i-2][2] === 'X' && scoreboard[i-1][2] === 'X') {
+      scoreboard[i-2][2] = 30
+      score += scoreboard[i-2][2]
+    }
+  }
 }
 
-//function that calculates score each frame accounting for spares and strikes
+//function that calculates score each frame and adds a flag for spares and strikes
 
 const calculateFrameScore = (frame) => {
-  if(frame[0]+frame[1]===10) frame.push(10)
+  if (frame[0] + frame[1] !== 10) {
+    frame[2] = frame[0] + frame[1]
+    score += frame[2]
+  }
+  if (frame[0] + frame[1] === 10) {
+    frame[2] = '/'
+  }
+  if (frame[0] === 10) frame[2] = 'X'
 }
 //function that 'bowls' a random number between 0 and 10 & adds it to scoreboard
 
@@ -31,6 +51,7 @@ const bowlAFrame = () => {
   let remainingPins = 10-firstBowl
   //push first bowl to frame
   frame.push(firstBowl)
+  //
   if (remainingPins) {
     let secondBowlMax = remainingPins + 1
     //Array.from({length: remainingPins+1}, (v,i)=> i)
@@ -40,6 +61,7 @@ const bowlAFrame = () => {
   else {frame.push(0)}
   calculateFrameScore(frame)
   scoreboard.push(frame)
+  calculateTotalScore(scoreboard)
 }
 //play a game
 const playAGame = () => {
@@ -48,20 +70,14 @@ const playAGame = () => {
     bowlAFrame()
     frame++
   }
-  console.log(scoreboard)
+  console.log(scoreboard, score)
 }
 playAGame()
-//function that identifies when the game is over
-
-const checkGameEnd = () => {
-
-}
 
 module.exports = {
   Bowl: bowl,
   Scoreboard: scoreboard,
   CalculateTotalScore: calculateTotalScore,
-  CheckGameEnd: checkGameEnd,
   BowlAFrame: bowlAFrame,
   CalculateFrameScore: calculateFrameScore,
   PlayAGame: playAGame
