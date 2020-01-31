@@ -6,7 +6,7 @@ let score = 0
 //list of functions
 
 const calculateTotalScore = (scoreboard) => {
-  for (let i = 2; i <= scoreboard.length; i++) {
+  for (let i = 2; i < scoreboard.length; i++) {
     // scoring for a spare
     if (scoreboard[i-2][2] === '/') {
       scoreboard[i-2][2] = 10 + scoreboard[i-1][0]
@@ -46,18 +46,30 @@ const bowl = () => {
 //function that scores a frame 10
 const scoreFrame10 = (scoreboard) => {
 //if you bowl a spare in the final frame you get own extra bowl
-console.log(scoreboard[10])
-if (scoreboard[9][2] === '/') {
-  scoreboard[9][3] = bowl() 
-  scoreboard[9][2] = 10 + scoreboard[9][3]
-  score+= scoreboard[9][2] + scoreboard[9][3]
-}
-if (scoreboard[9][2] === 'X') {
-  //if you bowl a strike, you get two extra bowls
-  scoreboard[9][3] = bowl()
-  scoreboard[9][4] = bowl()
-  scoreboard[9][2] = 10 + scoreboard[9][3] + scoreboard[9][4]
-  score += scoreboard[9][2] + scoreboard[9][3] + scoreboard[9][4]
+  if (scoreboard[9][2] === '/') {
+    scoreboard[9][3] = bowl() 
+    scoreboard[9][2] = 10 + scoreboard[9][3]
+    score+= scoreboard[9][2]
+  }
+  if (scoreboard[9][2] === 'X') {
+    //if you bowl a strike, you get two extra bowls
+    scoreboard[9][3] = bowl()
+    scoreboard[9][4] = bowl()
+    scoreboard[9][2] = 10 + scoreboard[9][3] + scoreboard[9][4]
+    score += scoreboard[9][2]
+    }
+  //scoring for 9th frame (missed by framescore loop)
+  if (scoreboard[8][2] === '/') {
+    scoreboard[8][2] = 10 + scoreboard[9][0]
+    score+= scoreboard[8][2]
+  }
+  if (scoreboard[8][2] === 'X' && scoreboard[9][0] !== 10) {
+    scoreboard[8][2] = 10 + scoreboard[9][0] + scoreboard[9][1]
+    score+= scoreboard[8][2]
+  }
+  if (scoreboard[8][2] === 'X' && scoreboard[9][0] === 10) {
+    scoreboard[8][2] = 10 + scoreboard[9][0] + scoreboard[9][3]
+    score+= scoreboard[8][2]
   }
 }
 
