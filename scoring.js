@@ -103,7 +103,7 @@ const playAGame = () => {
     if (frame === 10) scoreFrame10(scoreboard)
     frame++
   }
-  console.log(scoreboard, score)
+  return score
 }
 playAGame()
 
