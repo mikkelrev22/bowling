@@ -17,9 +17,9 @@ const calculateTotalScore = (scoreboard) => {
       scoreboard[i-2][2] = 10 + scoreboard[i-1][0] + scoreboard[i-1][1]
       score += scoreboard[i-2][2]
     }
-    // fix this function; it is not necessarily 30
+    // scoring for two strikes or three in a row
     if (scoreboard[i-2][2] === 'X' && scoreboard[i-1][2] === 'X') {
-      scoreboard[i-2][2] = 30
+      scoreboard[i-2][2] = 20 + scoreboard[i][0]
       score += scoreboard[i-2][2]
     }
   }
@@ -43,6 +43,24 @@ const bowl = () => {
   //random number between 0 and  10
   return Math.floor(Math.random()*11)
 }
+//function that scores a frame 10
+const scoreFrame10 = (scoreboard) => {
+//if you bowl a spare in the final frame you get own extra bowl
+console.log(scoreboard[10])
+if (scoreboard[9][2] === '/') {
+  scoreboard[9][3] = bowl() 
+  scoreboard[9][2] = 10 + scoreboard[9][3]
+  score+= scoreboard[9][2] + scoreboard[9][3]
+}
+if (scoreboard[9][2] === 'X') {
+  //if you bowl a strike, you get two extra bowls
+  scoreboard[9][3] = bowl()
+  scoreboard[9][4] = bowl()
+  scoreboard[9][2] = 10 + scoreboard[9][3] + scoreboard[9][4]
+  score += scoreboard[9][2] + scoreboard[9][3] + scoreboard[9][4]
+  }
+}
+
 //function that adds pinScore to frame
 const bowlAFrame = () => {
   //create currentFrame
@@ -70,6 +88,7 @@ const playAGame = () => {
   let frame = 1
   while (frame < 11) {
     bowlAFrame()
+    if (frame === 10) scoreFrame10(scoreboard)
     frame++
   }
   console.log(scoreboard, score)
