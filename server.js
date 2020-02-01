@@ -5,7 +5,7 @@ const Bowl = require('./scoring.js')
 
 app.get('/', (req, res)=>{
   console.log(Bowl.playAGame())
-  res.send(Bowl.playAGame())
+  // res.send(Bowl.playAGame())
 })
 
 app.use((err, req, res, next)=>{
