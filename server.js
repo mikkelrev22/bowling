@@ -1,12 +1,10 @@
 const express = require('express')
 const app = express()
 const port = 7666
-const Bowl = require('./scoring.js')
 
-app.get('/', (req, res)=>{
-  console.log(Bowl.playAGame())
-  // res.send(Bowl.playAGame())
-})
+
+
+app.use(express.static(__dirname + '/client/dist'))
 
 app.use((err, req, res, next)=>{
   res.sendStatus(404)
