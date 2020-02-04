@@ -14,10 +14,14 @@ const App = () => {
   const [currentFrame, setCurrentFrame]  = useState(0)
   const calculateScore = (scoreboard) => {
     //create a function that calculates the current running score
+    let score = 0
+    for (let frame of scoreboard) {
+        score += frame[0] + frame[1]
+    }
+    return score
   }
-
   const endGame = () => {
-
+  
   }
 
   const bowl = () => {
@@ -40,7 +44,7 @@ const App = () => {
   <div className="app">
     <div className="scoreboard">
       {scoreboard.map((frame, i) => (
-      <Frame key={i} bowl1={frame[0]} bowl2={frame[1]} currentScore={frame[0]+frame[1]} frameNumber={i}/>
+      <Frame key={i} bowl1={frame[0]} bowl2={frame[1]} currentScore={calculateScore(scoreboard)} frameNumber={i}/>
       ))}
     </div>
     <button className="bowlButton" onClick={bowl}>Click to bowl!</button>
