@@ -30,6 +30,9 @@ const App = () => {
         }
       }
     }
+    else if (newScoreboard[0][0] === 'X' || newScoreboard[0][1] === '/') {
+      score = 10
+    }
     else {
       score = newScoreboard[0][0] + newScoreboard[0][1]
     }
