@@ -52,11 +52,19 @@ const App = () => {
       }
       else if (scoreboard[currentFrame][0] === null) {
         let bowl1Score = Math.floor(Math.random()*11)
-        if (bowl1Score === 10) bowl1Score = 'X'
+        
         let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
         newScoreboard[currentFrame][0] = bowl1Score
-        calculateScore(newScoreboard)
-        setScore(newScoreboard)
+        if (bowl1Score === 10) {
+          newScoreboard[currentFrame][0] = 'X'
+          newScoreboard[currentFrame][1] = null
+          calculateScore(newScoreboard)
+          setScore(newScoreboard)
+        }
+        else {
+          calculateScore(newScoreboard)
+          setScore(newScoreboard)
+        }
       }
   }
   return (
