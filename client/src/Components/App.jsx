@@ -35,7 +35,6 @@ const App = () => {
     else {
       score = newScoreboard[0][0] + newScoreboard[0][1]
     }
-    
     newScoreboard[currentFrame][2] = score
     return newScoreboard
   }
