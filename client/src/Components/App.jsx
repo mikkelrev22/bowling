@@ -16,19 +16,18 @@ const App = () => {
   const calculateScore = (newScoreboard) => {
     let score = 0
     if (currentFrame) {
-      let i = 1;
-      while (i <= currentFrame) {
+      let i = currentFrame
         //add logic for calculating spares and strikes in prev. frames
+        if (newScoreboard[i-1][1] === '/') {
+          newScoreboard[i-1][2] = newScoreboard[i-1][2] + newScoreboard[i][0] 
+        }
         //add logic for calculating spares and strikes in current frame
         if (newScoreboard[currentFrame][0] === 'X' || newScoreboard[currentFrame][1] === '/') {
           score = newScoreboard[i-1][2] + 10
-          i++
         } 
         else {
-        score = newScoreboard[i-1][2] + newScoreboard[i][0] + newScoreboard[i][1] 
-        i++
+          score = newScoreboard[i-1][2] + newScoreboard[i][0] + newScoreboard[i][1]
         }
-      }
     }
     else if (newScoreboard[0][0] === 'X' || newScoreboard[0][1] === '/') {
       score = 10
