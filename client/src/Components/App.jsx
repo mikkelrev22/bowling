@@ -22,12 +22,27 @@ const App = () => {
         //     newScoreboard[i-2][2] = newScoreboard[i-2][2] + newScoreboard[i-1][2] + newScoreboard[i][2]
         // }
         //add logic for calculating 1 strike in prev. frames
-        if (newScoreboard[i-1][0] === 'X' && newScoreboard[i][0] !== 'X') {
+        
+        // if (newScoreboard[i-1][0] === 'X' && newScoreboard[i][1] === 'X') {
+
+        // }
+        if (newScoreboard[i-1][0] === 'X' && newScoreboard[i][1] === '/') {
+          newScoreboard[i-1][2] = newScoreboard[i-1][2] + 10 - newScoreboard[i][0]
+        }
+        else {
           if (newScoreboard[i][1] === null) newScoreboard[i-1][2] = newScoreboard[i-1][2] + newScoreboard[i][0]
           if (newScoreboard[i][1] !== null) newScoreboard[i-1][2] = newScoreboard[i-1][2] + newScoreboard[i][1]
         }
         //add logic for calculating spares in prev. frames
-        if (newScoreboard[i-1][1] === '/' && newScoreboard[i][1] === null) newScoreboard[i-1][2] = newScoreboard[i-1][2] + newScoreboard[i][0]
+        if (newScoreboard[i-1][1] === '/' && newScoreboard[i][1] === null) {
+          if (newScoreboard[i][0] === 'X') {
+            newScoreboard[i-1][2] = newScoreboard[i-1][2] + 10
+          }
+          else {
+            newScoreboard[i-1][2] = newScoreboard[i-1][2] + newScoreboard[i][0]
+          }
+        }
+        
         //add logic for calculating spares and strikes in current frame
         if (newScoreboard[i][0] === 'X' || newScoreboard[i][1] === '/') {
           score = newScoreboard[i-1][2] + 10
