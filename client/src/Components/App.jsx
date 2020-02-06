@@ -39,7 +39,6 @@ const App = () => {
     return newScoreboard
   }
  
-
   const bowl = () => {
       if (scoreboard[currentFrame][0] !== null) {
         let bowl2Score = Math.floor(Math.random()*(11-scoreboard[currentFrame][0]))
