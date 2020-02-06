@@ -17,12 +17,10 @@ const App = () => {
     let score = 0
     if (currentFrame) {
       let i = currentFrame
-        //add logic for calculating spares and strikes in prev. frames
-        if (newScoreboard[i-1][1] === '/') {
-          newScoreboard[i-1][2] = newScoreboard[i-1][2] + newScoreboard[i][0] 
-        }
+        //add logic for calculating spares in prev. frames
+        if (newScoreboard[i-1][1] === '/' && newScoreboard[i][1]===null) newScoreboard[i-1][2] = newScoreboard[i-1][2] + newScoreboard[i][0]
         //add logic for calculating spares and strikes in current frame
-        if (newScoreboard[currentFrame][0] === 'X' || newScoreboard[currentFrame][1] === '/') {
+        if (newScoreboard[i][0] === 'X' || newScoreboard[i][1] === '/') {
           score = newScoreboard[i-1][2] + 10
         } 
         else {
