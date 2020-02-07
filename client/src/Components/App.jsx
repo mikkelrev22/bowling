@@ -28,12 +28,6 @@ const App = () => {
       newScoreboard[currentFrame][2] = bowl1Score
     }
   }
-
-  const calculateScoreBowl2 = (newScoreboard, bowl2Score) => {
-    //add second bowl to the total score; no need to check for strikes or spares again
-    newScoreboard[currentFrame][2] = newScoreboard[currentFrame][2] + bowl2Score
-  }
-
   const checkForStrikes = (newScoreboard) => {
 
   }
@@ -50,7 +44,6 @@ const App = () => {
           newScoreboard[currentFrame][1] = bowl2Score
           newScoreboard[currentFrame][2] += newScoreboard[currentFrame][1]
           setScore(newScoreboard)
-          calculateScoreBowl2(newScoreboard, bowl2Score)
           setCurrentFrame(currentFrame + 1)
       }
       //first bowl
