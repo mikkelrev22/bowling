@@ -17,7 +17,7 @@ const App = () => {
     //if this is not the first frame
     if (currentFrame) { 
       //check for strikes and spares to update previous scores
-      checkForStrikes(newScoreboard)
+      checkForStrikesBowl1(newScoreboard)
       checkForSpares(newScoreboard)
       //add first bowl of new frame to existing score
       newScoreboard[currentFrame][2] = newScoreboard[currentFrame - 1][2] + bowl1Score
@@ -28,12 +28,47 @@ const App = () => {
       newScoreboard[currentFrame][2] = bowl1Score
     }
   }
-  const checkForStrikes = (newScoreboard) => {
 
+  const checkForStrikesBowl1 = (newScoreboard) => {
+    //check previous two frames for strikes during first bowl of new frame
+    let previous = currentFrame - 1
+    let prevPrev = currentFrame - 2
+
+    //in case of a strike on the first frame
+    if (currentFrame === 1 && newScoreboard[previous][0] === 10) {
+      newScoreboard[previous][2] += newScoreboard[currentFrame][0]
+    }
+    // in case of single strike
+    if (newScoreboard[prevPrev]) {
+      if (newScoreboard[previous][0] === 10 && newScoreboard[prevPrev][0] !== 10) {
+        newScoreboard[previous][2] += newScoreboard[currentFrame][0]
+      }
+    }
+    // in case of double strike
+    if (newScoreboard[prevPrev]) {
+      if (newScoreboard[previous][0] === 10 && newScoreboard[prevPrev][0] === 10) {
+        newScoreboard[prevPrev][2] += newScoreboard[currentFrame][0]
+        newScoreboard[previous][2] = newScoreboard[prevPrev][2] + newScoreboard[previous][0] + newScoreboard[currentFrame][0]
+      }
+    }
+  }
+
+  const checkForStrikesBowl2 = (newScoreboard) => {
+    //check for strikes in the previous frame 
+    let previous = currentFrame - 1
+    if (newScoreboard[previous]) {
+      if (newScoreboard[previous][0] === 10) {
+        newScoreboard[previous][2] += newScoreboard[currentFrame][1]
+      }
+    }
   }
 
   const checkForSpares = (newScoreboard) => {
-
+    //check previous frame for spares
+    let previous = currentFrame - 1
+    if (newScoreboard[previous][0] + newScoreboard[previous][1] === 10 && newScoreboard[previous][0] !== 10) {
+      newScoreboard[previous][2] = newScoreboard[previous][2] + newScoreboard[currentFrame][0]
+    }
   }
 
   const bowl = () => {
@@ -43,12 +78,14 @@ const App = () => {
         let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
           newScoreboard[currentFrame][1] = bowl2Score
           newScoreboard[currentFrame][2] += newScoreboard[currentFrame][1]
+          checkForStrikesBowl2(newScoreboard)
           setScore(newScoreboard)
           setCurrentFrame(currentFrame + 1)
       }
       //first bowl
       else if (scoreboard[currentFrame][0] === null) {
-        let bowl1Score = Math.floor(Math.random()*11)
+        let bowl1Score = 10
+        // Math.floor(Math.random()*11)
         let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
         newScoreboard[currentFrame][0] = bowl1Score
         //in case of a strike
