@@ -38,7 +38,7 @@ const App = () => {
     if (currentFrame === 1 && newScoreboard[previous][0] === 10) {
       newScoreboard[previous][2] += newScoreboard[currentFrame][0]
     }
-    // in case of single strike
+    // in case of single strike (refactor with double strike...double strike can be added as a conditional to single strike)
     if (newScoreboard[prevPrev]) {
       if (newScoreboard[previous][0] === 10 && newScoreboard[prevPrev][0] !== 10) {
         newScoreboard[previous][2] += newScoreboard[currentFrame][0]
