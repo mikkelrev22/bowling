@@ -5,6 +5,7 @@ return <div className="frame">
   Frame: {frameNumber+1}
 <div className="bowl"> Bowl 1 Score: {bowl1}</div>
 <div className="bowl"> Bowl 2 Score: {bowl2}</div>
+<div className="bowl"> Bowl 3 Score: {bowl3}</div>
 <div className="score">Current Score: {currentScore}</div>
 </div>
 }
@@ -71,12 +72,6 @@ const App = () => {
     }
   }
 
-  // const checkForStrikeOnPreviousBowl_10thFrame = (newScoreboard) => {
-  //   if (newScoreboard[currentFrame][0] === 10) {
-  //     newScoreboard[currentFrame][2] += newScoreboard[currentFrame][1]
-  //   } 
-  // }
-
   const bowl3_Frame10 = () => {
     let bowl3Score = Math.floor(Math.random()*(11))
     let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
@@ -95,7 +90,6 @@ const App = () => {
       newScoreboard[currentFrame][1] = bowl2Score
       newScoreboard[currentFrame][2] += newScoreboard[currentFrame][1]
       checkForStrikesBowl2(newScoreboard)
-      // checkForStrikeOnPreviousBowl_10thFrame(newScoreboard)
       setScore(newScoreboard)
     }
     else {
@@ -163,7 +157,7 @@ const App = () => {
   <div className="app">
     <div className="scoreboard">
       {scoreboard.map((frame, i) => (
-      <Frame key={i} bowl1={frame[0]} bowl2={frame[1]} currentScore={frame[2]} frameNumber={i}/>
+      <Frame key={i} bowl1={frame[0]} bowl2={frame[1]} currentScore={frame[2]} frameNumber={i} bowl3={frame[3]}/>
       ))}
     </div>
     <button className="bowlButton" onClick={bowl}>Click to bowl!</button>
