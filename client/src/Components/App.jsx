@@ -71,10 +71,14 @@ const App = () => {
       newScoreboard[previous][2] = newScoreboard[previous][2] + newScoreboard[currentFrame][0]
     }
   }
-
+  const bowl10thFrame = () => {
+    
+  }
   const bowl = () => {
+      // if bowling the final frame, there are special rules
+      if (currentFrame === 9) bowl10thFrame() 
       //second bowl
-      if (scoreboard[currentFrame][0] !== null) {
+      else if (scoreboard[currentFrame][0] !== null) {
         let bowl2Score = Math.floor(Math.random()*(11-scoreboard[currentFrame][0]))
         let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
           newScoreboard[currentFrame][1] = bowl2Score
@@ -96,9 +100,7 @@ const App = () => {
           calculateScoreBowl1(newScoreboard, bowl1Score)
           setScore(newScoreboard)
           //in case of a strike on any other frames but 10
-          if (currentFrame !== 9) {
-            setCurrentFrame(currentFrame + 1)
-          }
+          if (currentFrame !== 9) setCurrentFrame(currentFrame + 1)
         }
         //in all other cases
         else {
