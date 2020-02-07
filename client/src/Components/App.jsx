@@ -38,14 +38,16 @@ const App = () => {
     if (currentFrame === 1 && newScoreboard[previous][0] === 10) {
       newScoreboard[previous][2] += newScoreboard[currentFrame][0]
     }
-      // in case of single strike 
+      // in case of single strike (can still refactor w/ double strike case)
+    if (newScoreboard[prevPrev]) {
       if (newScoreboard[previous][0] === 10 && newScoreboard[prevPrev][0] !== 10) {
-        newScoreboard[previous][2] += newScoreboard[currentFrame][0]
-      }
-      // in case of double strike
+          newScoreboard[previous][2] += newScoreboard[currentFrame][0]
+        }
+        // in case of double strike
       if (newScoreboard[previous][0] === 10 && newScoreboard[prevPrev][0] === 10) {
-        newScoreboard[prevPrev][2] += newScoreboard[currentFrame][0]
-        newScoreboard[previous][2] = newScoreboard[prevPrev][2] + newScoreboard[previous][0] + newScoreboard[currentFrame][0]
+          newScoreboard[prevPrev][2] += newScoreboard[currentFrame][0]
+          newScoreboard[previous][2] = newScoreboard[prevPrev][2] + newScoreboard[previous][0] + newScoreboard[currentFrame][0]
+        }
       }
     }
     
@@ -83,7 +85,8 @@ const App = () => {
       }
       //first bowl
       else if (scoreboard[currentFrame][0] === null) {
-        let bowl1Score = Math.floor(Math.random()*11)
+        let bowl1Score = 10
+        // Math.floor(Math.random()*11)
         let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
         newScoreboard[currentFrame][0] = bowl1Score
         //in case of a strike
@@ -92,7 +95,10 @@ const App = () => {
           newScoreboard[currentFrame][1] = null
           calculateScoreBowl1(newScoreboard, bowl1Score)
           setScore(newScoreboard)
-          setCurrentFrame(currentFrame + 1)
+          //in case of a strike on any other frames but 10
+          if (currentFrame !== 9) {
+            setCurrentFrame(currentFrame + 1)
+          }
         }
         //in all other cases
         else {
