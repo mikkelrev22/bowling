@@ -50,7 +50,7 @@ const App = () => {
           newScoreboard[currentFrame][1] = bowl2Score
           newScoreboard[currentFrame][2] += newScoreboard[currentFrame][1]
           setScore(newScoreboard)
-          calculateScoreBowl2(newScoreboard)
+          calculateScoreBowl2(newScoreboard, bowl2Score)
           setCurrentFrame(currentFrame + 1)
       }
       //first bowl
@@ -62,13 +62,13 @@ const App = () => {
         if (bowl1Score === 10) {
           newScoreboard[currentFrame][0] = 10
           newScoreboard[currentFrame][1] = null
-          calculateScoreBowl1(newScoreboard)
+          calculateScoreBowl1(newScoreboard, bowl1Score)
           setScore(newScoreboard)
           setCurrentFrame(currentFrame + 1)
         }
         //in all other cases
         else {
-          calculateScoreBowl1(newScoreboard)
+          calculateScoreBowl1(newScoreboard, bowl1Score)
           setScore(newScoreboard)
         }
       }
