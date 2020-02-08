@@ -3,10 +3,10 @@ import React, { useState }  from 'react'
 const Frame = ({bowl1, bowl2, bowl3, currentScore, frameNumber}) => {
 return <div className="frame">
   Frame: {frameNumber+1}
-<div className="bowl"> Bowl 1 Score: {bowl1}</div>
-<div className="bowl"> Bowl 2 Score: {bowl2}</div>
+<div className="bowl1"> Bowl 1 Score: {bowl1}</div>
+<div className="bowl2"> Bowl 2 Score: {bowl2}</div>
 {bowl3 || bowl3 === 0 &&
-<div className="bowl"> Bowl 3 Score: {bowl3}</div>
+<div className="bowl3"> Bowl 3 Score: {bowl3}</div>
 }
 <div className="score">Current Score: {currentScore}</div>
 </div>
@@ -157,7 +157,9 @@ const App = () => {
       <Frame key={i} bowl1={frame[0]} bowl2={frame[1]} currentScore={frame[2]} frameNumber={i} bowl3={frame[3]}/>
       ))}
     </div>
+    <div className="bowlButtonContainer">
     <button className="bowlButton" onClick={bowl}>Click to bowl!</button>
+    </div>
   </div>
   )
 }
