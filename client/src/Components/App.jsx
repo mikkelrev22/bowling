@@ -52,9 +52,7 @@ const App = () => {
         }
       }
     }
-    
   
-
   const checkForStrikesBowl2 = (newScoreboard) => {
     //check for strikes in the previous frame 
     let previous = currentFrame - 1
@@ -80,14 +78,12 @@ const App = () => {
     newScoreboard[currentFrame][3] = bowl3Score
     newScoreboard[currentFrame][2] += newScoreboard[currentFrame][3]
     setScore(newScoreboard)
-    console.log('endGameWith3BowlsIn10thFrame', newScoreboard[currentFrame][3])
   }
 
   const bowl2_Frame10 = () => {
     //check for a strike on previous bowl
     if (scoreboard[currentFrame][0] === 10) {
-      let bowl2Score = 10
-      // let bowl2Score = Math.floor(Math.random()*(11))
+      let bowl2Score = Math.floor(Math.random()*(11))
       let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
       newScoreboard[currentFrame][1] = bowl2Score
       newScoreboard[currentFrame][2] += newScoreboard[currentFrame][1]
@@ -133,8 +129,7 @@ const App = () => {
       }
       //first bowl
       else if (scoreboard[currentFrame][0] === null) {
-        let bowl1Score = 10
-        // let bowl1Score = Math.floor(Math.random()*11)
+        let bowl1Score = Math.floor(Math.random()*11)
         let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
         newScoreboard[currentFrame][0] = bowl1Score
         //in case of a strike
