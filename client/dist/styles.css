@@ -21,6 +21,7 @@ consider creating a disabled button for game over
 .bowlButtonContainer {
 display: flex;
 justify-content: center;
+height: 150px;
 }
 
 .frame {
