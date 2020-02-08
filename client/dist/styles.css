@@ -1,5 +1,8 @@
 .scoreboard {
-
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 50px;
 }
 /*
 consider creating a disabled button for game over 
@@ -25,21 +28,21 @@ height: 150px;
 }
 
 .frame {
-
+  display: grid;
 }
 
 .bowl1 {
-
+  display: grid;
 }
 
 .bowl2 {
-
+  display: grid;
 }
 
 .bowl3 {
-
+  display: grid;
 }
 
 .score {
-
+  display: grid;
 }
