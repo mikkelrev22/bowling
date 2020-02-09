@@ -1,14 +1,16 @@
 import React, { useState }  from 'react'
 
 const Frame = ({bowl1, bowl2, bowl3, currentScore, frameNumber}) => {
-return <div className="frame">
-  Frame: {frameNumber+1}
-<div className="bowl1"> Bowl 1 Score: {bowl1}</div>
-<div className="bowl2"> Bowl 2 Score: {bowl2}</div>
+return <div className="frameContianer">
+  {frameNumber+1}
+  <div className="frame">
+<div className="bowl1"> {bowl1}</div>
+<div className="bowl2"> {bowl2}</div>
 {bowl3 || bowl3 === 0 &&
-<div className="bowl3"> Bowl 3 Score: {bowl3}</div>
+<div className="bowl3"> {bowl3}</div>
 }
-<div className="score">Current Score: {currentScore}</div>
+<div className="score"> {currentScore}</div>
+</div>
 </div>
 }
 

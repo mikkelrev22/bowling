@@ -1,8 +1,9 @@
 .scoreboard {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   margin-bottom: 50px;
+  margin-top: 50px;
 }
 /*
 consider creating a disabled button for game over 
@@ -29,6 +30,14 @@ height: 150px;
 
 .frame {
   display: grid;
+  border: solid 2px black;
+  height: 100px;
+  width: 133px;
+}
+
+.frameContianer {
+  display: grid;
+  text-align: center;
 }
 
 .bowl1 {
