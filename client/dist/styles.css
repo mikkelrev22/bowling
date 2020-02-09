@@ -28,30 +28,41 @@ justify-content: center;
 height: 150px;
 }
 
-.frame {
-  display: grid;
-  border: solid 2px black;
-  height: 100px;
-  width: 133px;
-}
 
 .frameContianer {
   display: grid;
   text-align: center;
 }
 
-.bowl1 {
+.frame {
   display: grid;
+  border: solid 2px black;
+  height: 100px;
+  width: 133px;
+  grid-template-columns: 42px 42px 42px;
+  grid-template-rows: 40px auto;
+}
+
+.bowl1 {
+  grid-column-start: 1;
+  grid-template-rows: 1;
+  align-self: center;
+  justify-self: center;
 }
 
 .bowl2 {
-  display: grid;
+  grid-column-start: 3;
+  grid-template-rows: 1;
+  align-self: center;
+  justify-self: center;
 }
 
 .bowl3 {
-  display: grid;
 }
 
 .score {
-  display: grid;
+  grid-column-start: 2;
+  grid-template-rows: 2;
+  align-self: center;
+  justify-self: center;
 }
