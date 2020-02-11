@@ -6,3 +6,4 @@ creating app to simulate bowling scoring
 - style strikes and spares with / and X
 - style 0 with -
 - what happens when the game ends?
+- potential: fixed double borders on scoreboard frames
