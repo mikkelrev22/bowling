@@ -20,19 +20,20 @@ const App = () => {
   const [scoreboardToRender, setScoreboardToRender] = useState([[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null]])
 
   const renderScoreboard = () => {
-    let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
+    let scoreboardToCheck = JSON.parse(JSON.stringify(scoreboard))
     let i = currentFrame
     while(i < 10) {
-      if (newScoreboard[currentFrame][0] === 10) {
-        newScoreboard[currentFrame][1] = 'X'
-        newScoreboard[currentFrame][0] = null
+      if (scoreboardToCheck[currentFrame][0] === 10) {
+        scoreboardToCheck[currentFrame][1] = 'X'
+        scoreboardToCheck[currentFrame][0] = null
       }
-      if (newScoreboard[currentFrame][0] === 0) newScoreboard[currentFrame][0] = '-'
-      if (newScoreboard[currentFrame][1] === 0) newScoreboard[currentFrame][1] = '-'
-      if (newScoreboard[currentFrame][0] + newScoreboard[currentFrame][1] === 10) newScoreboard[currentFrame][1] = '/'
+      if (scoreboardToCheck[currentFrame][0] === 0) scoreboardToCheck[currentFrame][0] = '-'
+      if (scoreboardToCheck[currentFrame][1] === 0) scoreboardToCheck[currentFrame][1] = '-'
+      if (scoreboardToCheck[currentFrame][0] + scoreboardToCheck[currentFrame][1] === 10) scoreboardToCheck[currentFrame][1] = '/'
+      i++
     }
-      setScoreboardToRender(newScoreboard)
-    console.log(newScoreboard)
+      setScoreboardToRender(scoreboardToCheck)
+    console.log(scoreboardToRender, scoreboard)
   }
 
   const calculateScoreBowl1 = (newScoreboard, bowl1Score) => {
@@ -42,7 +43,6 @@ const App = () => {
       checkForSpares(newScoreboard)
       //add first bowl of new frame to existing score
       newScoreboard[currentFrame][2] = newScoreboard[currentFrame - 1][2] + bowl1Score
-      setScoreboardToRender(newScoreboard)
     }
     //if this is the first frame
     else {
