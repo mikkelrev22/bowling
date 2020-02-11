@@ -17,6 +17,23 @@ return <div className="frameContianer">
 const App = () => {
   const [scoreboard, setScore] = useState([[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null]])
   const [currentFrame, setCurrentFrame]  = useState(0)
+  const [scoreboardToRender, setScoreboardToRender] = useState([[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null]])
+
+  const renderScoreboard = () => {
+    let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
+    let i = currentFrame
+    while(i < 10) {
+      if (newScoreboard[currentFrame][0] === 10) {
+        newScoreboard[currentFrame][1] = 'X'
+        newScoreboard[currentFrame][0] = null
+      }
+      if (newScoreboard[currentFrame][0] === 0) newScoreboard[currentFrame][0] = '-'
+      if (newScoreboard[currentFrame][1] === 0) newScoreboard[currentFrame][1] = '-'
+      if (newScoreboard[currentFrame][0] + newScoreboard[currentFrame][1] === 10) newScoreboard[currentFrame][1] = '/'
+    }
+      setScoreboardToRender(newScoreboard)
+    console.log(newScoreboard)
+  }
 
   const calculateScoreBowl1 = (newScoreboard, bowl1Score) => {
     if (currentFrame) { 
@@ -25,6 +42,7 @@ const App = () => {
       checkForSpares(newScoreboard)
       //add first bowl of new frame to existing score
       newScoreboard[currentFrame][2] = newScoreboard[currentFrame - 1][2] + bowl1Score
+      setScoreboardToRender(newScoreboard)
     }
     //if this is the first frame
     else {
@@ -126,6 +144,7 @@ const App = () => {
           newScoreboard[currentFrame][2] += newScoreboard[currentFrame][1]
           checkForStrikesBowl2(newScoreboard)
           setScore(newScoreboard)
+          renderScoreboard()
           setCurrentFrame(currentFrame + 1)
         }
       }
@@ -140,6 +159,7 @@ const App = () => {
           newScoreboard[currentFrame][1] = null
           calculateScoreBowl1(newScoreboard, bowl1Score)
           setScore(newScoreboard)
+          renderScoreboard()
           if (currentFrame !== 9) {
             setCurrentFrame(currentFrame + 1)
           }
@@ -148,6 +168,7 @@ const App = () => {
         else {
           calculateScoreBowl1(newScoreboard, bowl1Score)
           setScore(newScoreboard)
+          renderScoreboard()
         }
       }
   }
@@ -155,7 +176,7 @@ const App = () => {
   return (
   <div className="app">
     <div className="scoreboard">
-      {scoreboard.map((frame, i) => (
+      {scoreboardToRender.map((frame, i) => (
       <Frame key={i} bowl1={frame[0]} bowl2={frame[1]} currentScore={frame[2]} frameNumber={i} bowl3={frame[3]}/>
       ))}
     </div>
