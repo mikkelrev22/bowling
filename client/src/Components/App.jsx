@@ -19,21 +19,20 @@ const App = () => {
   const [currentFrame, setCurrentFrame]  = useState(0)
   const [scoreboardToRender, setScoreboardToRender] = useState([[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null]])
 
-  const renderScoreboard = () => {
-    let scoreboardToCheck = JSON.parse(JSON.stringify(scoreboard))
-    let i = currentFrame
-    while(i < 10) {
-      if (scoreboardToCheck[currentFrame][0] === 10) {
-        scoreboardToCheck[currentFrame][1] = 'X'
-        scoreboardToCheck[currentFrame][0] = null
+  const renderScoreboard = (newScoreboard) => {
+    let scoreboardToCheck = JSON.parse(JSON.stringify(newScoreboard))
+    let i = 0
+    while(i <= currentFrame) {
+      if (scoreboardToCheck[i][0] === 10) {
+        scoreboardToCheck[i][1] = 'X'
+        scoreboardToCheck[i][0] = null
       }
-      if (scoreboardToCheck[currentFrame][0] === 0) scoreboardToCheck[currentFrame][0] = '-'
-      if (scoreboardToCheck[currentFrame][1] === 0) scoreboardToCheck[currentFrame][1] = '-'
-      if (scoreboardToCheck[currentFrame][0] + scoreboardToCheck[currentFrame][1] === 10) scoreboardToCheck[currentFrame][1] = '/'
+      if (scoreboardToCheck[i][0] === 0) scoreboardToCheck[i][0] = '-'
+      if (scoreboardToCheck[i][1] === 0) scoreboardToCheck[i][1] = '-'
+      if (scoreboardToCheck[i][0] + scoreboardToCheck[i][1] === 10) scoreboardToCheck[i][1] = '/'
       i++
     }
       setScoreboardToRender(scoreboardToCheck)
-    console.log(scoreboardToRender, scoreboard)
   }
 
   const calculateScoreBowl1 = (newScoreboard, bowl1Score) => {
@@ -98,6 +97,7 @@ const App = () => {
     newScoreboard[currentFrame][3] = bowl3Score
     newScoreboard[currentFrame][2] += newScoreboard[currentFrame][3]
     setScore(newScoreboard)
+    renderScoreboard(newScoreboard)
   }
 
   const bowl2_Frame10 = () => {
@@ -109,6 +109,7 @@ const App = () => {
       newScoreboard[currentFrame][2] += newScoreboard[currentFrame][1]
       checkForStrikesBowl2(newScoreboard)
       setScore(newScoreboard)
+      renderScoreboard(newScoreboard)
     }
     else {
       //use remaining pins
@@ -118,6 +119,7 @@ const App = () => {
       newScoreboard[currentFrame][2] += newScoreboard[currentFrame][1]
       checkForStrikesBowl2(newScoreboard)
       setScore(newScoreboard)
+      renderScoreboard(newScoreboard)
     }
   }
 
@@ -144,7 +146,7 @@ const App = () => {
           newScoreboard[currentFrame][2] += newScoreboard[currentFrame][1]
           checkForStrikesBowl2(newScoreboard)
           setScore(newScoreboard)
-          renderScoreboard()
+          renderScoreboard(newScoreboard)
           setCurrentFrame(currentFrame + 1)
         }
       }
@@ -159,7 +161,7 @@ const App = () => {
           newScoreboard[currentFrame][1] = null
           calculateScoreBowl1(newScoreboard, bowl1Score)
           setScore(newScoreboard)
-          renderScoreboard()
+          renderScoreboard(newScoreboard)
           if (currentFrame !== 9) {
             setCurrentFrame(currentFrame + 1)
           }
@@ -168,9 +170,10 @@ const App = () => {
         else {
           calculateScoreBowl1(newScoreboard, bowl1Score)
           setScore(newScoreboard)
-          renderScoreboard()
+          renderScoreboard(newScoreboard)
         }
       }
+      
   }
 
   return (
