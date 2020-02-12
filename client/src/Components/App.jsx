@@ -22,7 +22,7 @@ const App = () => {
   const renderScoreboard = (newScoreboard) => {
     let scoreboardToCheck = JSON.parse(JSON.stringify(newScoreboard))
     let i = 0
-    while(i <= currentFrame) {
+    while (i <= currentFrame) {
       if (scoreboardToCheck[i][0] === 10) {
         scoreboardToCheck[i][1] = 'X'
         scoreboardToCheck[i][0] = null
