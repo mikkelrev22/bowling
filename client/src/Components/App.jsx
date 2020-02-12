@@ -7,7 +7,7 @@ return <div className="frameContianer">
 <div className="bowl1"> {bowl1}</div>
 <div className="bowl2"> {bowl2}</div>
 {bowl3 || bowl3 === 0 &&
-<div className="bowl3"> {bowl3}</div>
+<div> {bowl3}</div>
 }
 <div className="score"> {currentScore}</div>
 </div>
