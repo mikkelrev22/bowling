@@ -14,7 +14,7 @@ return <div className="frameContianer">
 const Frame10 = ({bowl1, bowl2, bowl3, currentScore, frameNumber}) => {
   return <div className="frameContianer">
   {frameNumber}
-  <div className="frame">
+  <div className="frame10">
 <div className="bowl1"> {bowl1}</div>
 <div className="bowl2"> {bowl2}</div>
 <div className= "bowl3"> {bowl3}</div>
