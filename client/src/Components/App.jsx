@@ -187,10 +187,14 @@ const App = () => {
   return (
   <div className="app">
     <div className="scoreboard">
-      {scoreboardToRender.map((frame, i) => (
+      {scoreboardToRender.slice(0,9).map((frame, i) => (
+        <div>
       <Frame key={i} bowl1={frame[0]} bowl2={frame[1]} currentScore={frame[2]} frameNumber={i} bowl3={frame[3]}/>
+      </div>
       ))}
+       <div>
       <Frame10 bowl1={scoreboardToRender[9][0]} bowl2={scoreboardToRender[9][1]} currentScore={scoreboardToRender[9][2]} frameNumber={10} bowl3={scoreboardToRender[9][3]}/>
+      </div>
     </div>
     <div className="bowlButtonContainer">
     <button className="bowlButton" onClick={bowl}>Click to bowl!</button>
