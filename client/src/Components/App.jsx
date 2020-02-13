@@ -1,14 +1,23 @@
 import React, { useState }  from 'react'
 
-const Frame = ({bowl1, bowl2, bowl3, currentScore, frameNumber}) => {
+const Frame = ({bowl1, bowl2, currentScore, frameNumber}) => {
 return <div className="frameContianer">
   {frameNumber+1}
   <div className="frame">
 <div className="bowl1"> {bowl1}</div>
 <div className="bowl2"> {bowl2}</div>
-{bowl3 || bowl3 === 0 &&
-<div> {bowl3}</div>
+<div className="score"> {currentScore}</div>
+</div>
+</div>
 }
+
+const Frame10 = ({bowl1, bowl2, bowl3, currentScore, frameNumber}) => {
+  return <div className="frameContianer">
+  {frameNumber}
+  <div className="frame">
+<div className="bowl1"> {bowl1}</div>
+<div className="bowl2"> {bowl2}</div>
+<div className= "bowl3"> {bowl3}</div>
 <div className="score"> {currentScore}</div>
 </div>
 </div>
@@ -17,7 +26,7 @@ return <div className="frameContianer">
 const App = () => {
   const [scoreboard, setScore] = useState([[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null]])
   const [currentFrame, setCurrentFrame]  = useState(0)
-  const [scoreboardToRender, setScoreboardToRender] = useState([[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null]])
+  const [scoreboardToRender, setScoreboardToRender] = useState([[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null, null]])
 
   const renderScoreboard = (newScoreboard) => {
     let scoreboardToCheck = JSON.parse(JSON.stringify(newScoreboard))
@@ -182,6 +191,7 @@ const App = () => {
       {scoreboardToRender.map((frame, i) => (
       <Frame key={i} bowl1={frame[0]} bowl2={frame[1]} currentScore={frame[2]} frameNumber={i} bowl3={frame[3]}/>
       ))}
+      <Frame10 bowl1={scoreboardToRender[9][0]} bowl2={scoreboardToRender[9][1]} currentScore={scoreboardToRender[9][2]} frameNumber={10} bowl3={scoreboardToRender[9][3]}/>
     </div>
     <div className="bowlButtonContainer">
     <button className="bowlButton" onClick={bowl}>Click to bowl!</button>
