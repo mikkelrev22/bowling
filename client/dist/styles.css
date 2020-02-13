@@ -46,7 +46,7 @@ height: 150px;
   border: solid 2px black;
   height: 100px;
   width: 133px;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 44px 44px 44px;
   grid-template-rows: auto auto;
 }
 .bowl1 {
@@ -69,16 +69,33 @@ height: 150px;
   padding-top: 20px;
 }
 .bowl1Frame10 {
-  
+  grid-column-start: 1;
+  grid-row-start: 1;
+  height: 30px;
+  width: 44px;
+  border-bottom: 3px solid black;
+  padding-top: 20px;
+  text-align: center;
 }
 .bowl2Frame10 {
-
+  grid-column-start: 2;
+  grid-row-start: 1;
+  border-left: 3px solid black;
+  border-bottom: 3px solid black;
+  height: 30px;
+  width: 44px;
+  padding-top: 20px;
+  text-align: center;
 }
-.bowl3Frame10 {
-
-}
-.scoreFrame10 {
-
+.bowl3Frame10{
+  grid-column-start: 3;
+  grid-row-start: 1;
+  border-left: 3px solid black;
+  border-bottom: 3px solid black;
+  height: 30px;
+  width: 44px;
+  text-align: center;
+  padding-top: 20px;
 }
 
 .score {

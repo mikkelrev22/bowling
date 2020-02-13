@@ -15,9 +15,9 @@ const Frame10 = ({bowl1, bowl2, bowl3, currentScore, frameNumber}) => {
   return <div className="frameContianer">
   {frameNumber}
   <div className="frame10">
-<div className="bowl1"> {bowl1}</div>
-<div className="bowl2"> {bowl2}</div>
-<div className= "bowl3"> {bowl3}</div>
+<div className="bowl1Frame10"> {bowl1}</div>
+<div className="bowl2Frame10"> {bowl2}</div>
+<div className= "bowl3Frame10"> {bowl3}</div>
 <div className="score"> {currentScore}</div>
 </div>
 </div>
@@ -39,6 +39,19 @@ const App = () => {
       if (scoreboardToCheck[i][0] === 0) scoreboardToCheck[i][0] = '-'
       if (scoreboardToCheck[i][1] === 0) scoreboardToCheck[i][1] = '-'
       if (scoreboardToCheck[i][0] + scoreboardToCheck[i][1] === 10) scoreboardToCheck[i][1] = '/'
+      if (currentFrame === 9 && scoreboardToCheck[9][0] === 'X') {
+          scoreboardToCheck[9][0] = 'X'
+          if (scoreboardToCheck[9][0] === 'X' && scoreboard[9][1] === 10) scoreboard[9][1] === 'X'
+          if (scoreboardToCheck[9][0] === 'X' && scoreboard[9][1] !== 'X' && scoreboard[9][1] + scoreboard[9][3] === 10) {
+            scoreboard[9][3] === '/'
+          }
+          if (scoreboardToCheck[9][0] === 'X' && scoreboard[9][1] === 'X' && scoreboard[3] === 10) scoreboard[3] === 'X'
+      }
+      if (currentFrame === 9) {
+        if (scoreboardToCheck[9][1] === '/' && scoreboard[9][3] === 10) scoreboard[9][3] = 'X'
+        if (scoreboardToCheck[9][3] === 0)
+          scoreboardToCheck[9][3] = '-'
+      }
       i++
     }
       setScoreboardToRender(scoreboardToCheck)
