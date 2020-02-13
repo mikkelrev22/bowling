@@ -33,7 +33,7 @@ const App = () => {
     let i = 0
     while (i <= currentFrame) {
       //if there is a strike on any frame by the 10th
-      if (scoreboardToCheck[i][0] === 10) {
+      if (scoreboardToCheck[i][0] === 10 &&) {
         scoreboardToCheck[i][1] = 'X'
         scoreboardToCheck[i][0] = null
       }
