@@ -1,2 +1,4 @@
 node_modules
 bundle.js
+scoring.js
+scoring.test.js
