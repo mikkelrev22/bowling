@@ -21,9 +21,9 @@ module.exports = {
         use: [
           'file-loader',
           {
-            loader: 'image-webpack-loader',
+            loader: 'url-loader',
             options: {
-              disable: true,
+              limit: 8192,
             },
           },
         ],

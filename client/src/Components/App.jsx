@@ -1,4 +1,5 @@
 import React, { useState }  from 'react'
+import bowlingBall from '../../dist/bowling_PNG38.png'
 
 const Frame = ({bowl1, bowl2, currentScore, frameNumber}) => {
 return <div className="frameContianer">
@@ -224,7 +225,7 @@ const App = () => {
       </div>
     </div>
     <div className="bowlButtonContainer">
-    {/* <img src="img_snow.jpg" alt="Snow"/> */}
+    <img src={bowlingBall} alt="bowlingBall"/>
     <button className="bowlButton" onClick={bowl}>Click to bowl!</button>
     </div>
   </div>
