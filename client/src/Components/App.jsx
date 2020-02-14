@@ -224,6 +224,7 @@ const App = () => {
       </div>
     </div>
     <div className="bowlButtonContainer">
+    {/* <img src="img_snow.jpg" alt="Snow"/> */}
     <button className="bowlButton" onClick={bowl}>Click to bowl!</button>
     </div>
   </div>

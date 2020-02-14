@@ -28,6 +28,11 @@ justify-content: center;
 height: 150px;
 }
 
+.bowlButton img {
+  width: 100%;
+  height: auto;
+}
+
 .frameContianer {
   display: grid;
   text-align: center;
