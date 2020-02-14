@@ -1,5 +1,4 @@
 import React, { useState }  from 'react'
-import bowlingBall from '../../dist/bowling_PNG38.png'
 
 const Frame = ({bowl1, bowl2, currentScore, frameNumber}) => {
 return <div className="frameContianer">
@@ -163,7 +162,7 @@ const App = () => {
   const bowl = () => {
       //handle frame 10 bowl 3
       if (currentFrame === 9 && scoreboard[currentFrame][1] !== null) {
-        if (scoreboard[currentFrame][0] === 10 || scoreboard[currentFrame][0] + scoreboard[currentFrame][1] === 10) {
+        if ((!scoreboard[9][3] && scoreboard[currentFrame][0] === 10) || (!scoreboard[9][3] && scoreboard[currentFrame][0] + scoreboard[currentFrame][1] === 10)) {
           bowl3_Frame10()
         }
         else {
@@ -225,7 +224,6 @@ const App = () => {
       </div>
     </div>
     <div className="bowlButtonContainer">
-    <img src={bowlingBall} alt="bowlingBall"/>
     <button className="bowlButton" onClick={bowl}>Click to bowl!</button>
     </div>
   </div>
