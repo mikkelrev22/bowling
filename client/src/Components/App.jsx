@@ -62,7 +62,6 @@ const App = () => {
       //spare on any frame
       if (scoreboardToCheck[i][0] + scoreboardToCheck[i][1] === 10) {
         scoreboardToCheck[i][1] = '/'
-        displaySpareCheer()
       }
       //if there is a gutter ball on the first or second bowl of a frame
       if (scoreboardToCheck[i][0] === 0) scoreboardToCheck[i][0] = '-'
@@ -202,6 +201,9 @@ const App = () => {
           setScore(newScoreboard)
           renderScoreboard(newScoreboard)
           setCurrentFrame(currentFrame + 1)
+          if (newScoreboard[currentFrame][0] + newScoreboard[currentFrame][1] === 10) {
+            displaySpareCheer()
+          }
         }
       }
       //first bowl
@@ -243,9 +245,9 @@ const App = () => {
       </div>
     </div>
     <div className="bowlButtonContainer">
-    <div className="cheerContainer1">{cheer}</div>
+    <div className="cheerContainer">{cheer}</div>
     <button className="bowlButton" onClick={bowl}>Click to bowl!</button>
-      <div className="cheerContainer2">{cheer}</div>
+      <div className="cheerContainer">{cheer}</div>
     </div>
   </div>
   )
