@@ -31,16 +31,17 @@ const App = () => {
 
   const displayStrikeCheer = () => {
     setCheer('Strike!')
+    removeCheer()
   }
 
   const displaySpareCheer = () => {
     setCheer('Spare!')
+    removeCheer()
   }
 
-  // const displayCheer = () => {
-  //   const cheerArray = []
-  //   setCheer()
-  // }
+  const removeCheer = () => {
+    setTimeout(()=>{setCheer('')}, 2500)
+  }
 
   const renderScoreboard = (newScoreboard) => {
     let scoreboardToCheck = JSON.parse(JSON.stringify(newScoreboard))
@@ -242,7 +243,7 @@ const App = () => {
       </div>
     </div>
     <div className="bowlButtonContainer">
-    <div className="cheerContainer1">{cheer}></div>
+    <div className="cheerContainer1">{cheer}</div>
     <button className="bowlButton" onClick={bowl}>Click to bowl!</button>
       <div className="cheerContainer2">{cheer}</div>
     </div>
