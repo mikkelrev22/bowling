@@ -4,10 +4,11 @@
   justify-content: center;
   margin-bottom: 50px;
   margin-top: 50px;
+  background-color: black;
 }
-/*
-consider creating a disabled button for game over 
-*/
+.app {
+  background-color: black;
+}
 .bowlButton {
   border-radius: 50%;
   padding: 15px 32px;
@@ -21,6 +22,12 @@ consider creating a disabled button for game over
   height: 400px;
   width: 394px;
   text-align: center;
+  padding: 125px 0px 0px 0px;
+  font-family: 'Mr Dafoe', cursive;
+  font-style: italic;
+  color: #F975F7;
+  transform:rotate(-15deg);
+  filter: drop-shadow(2px 2px 20px #f008b7);
 }
 
 .bowlButton:hover {
@@ -32,32 +39,41 @@ consider creating a disabled button for game over
 display: flex;
 justify-content: center;
 height: 400px;
+background-color: black;
 }
 
 .frameContianer {
   display: grid;
   text-align: center;
+  color: #F975F7;
+  filter: drop-shadow(2px 2px 20px #f008b7);
 }
 
 .frame {
+  color: #F975F7;
+  filter: drop-shadow(2px 2px 20px #f008b7);
   display: grid;
-  border-left: solid 2px black;
-  border-top: solid 2px black;
-  border-bottom: solid 2px black;
+  border-left: solid 2px  #F975F7;
+  border-top: solid 2px  #F975F7;
+  border-bottom: solid 2px  #F975F7;
   height: 100px;
   width: 133px;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
 }
 .frame10 {
+  color: #F975F7;
+  filter: drop-shadow(2px 2px 20px #f008b7);
   display: grid;
-  border: solid 2px black;
+  border: solid 2px  #F975F7;
   height: 100px;
   width: 133px;
   grid-template-columns: 44px 44px 44px;
   grid-template-rows: auto auto;
 }
 .bowl1 {
+  color: #F975F7;
+  filter: drop-shadow(2px 2px 20px #f008b7);
   grid-column-start: 1;
   grid-row-start: 1;
   height: 30px;
@@ -67,39 +83,47 @@ height: 400px;
 }
 
 .bowl2 {
+  color: #F975F7;
+  filter: drop-shadow(2px 2px 20px #f008b7);
   grid-column-start: 2;
   grid-row-start: 1;
-  border-left: 2px solid black;
-  border-bottom: 2px solid black;
+  border-left: 2px solid  #F975F7;
+  border-bottom: 2px solid  #F975F7;
   height: 30px;
   width: 66px;
   text-align: center;
   padding-top: 20px;
 }
 .bowl1Frame10 {
+  color: #F975F7;
+  filter: drop-shadow(2px 2px 20px #f008b7);
   grid-column-start: 1;
   grid-row-start: 1;
   height: 30px;
   width: 44px;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid  #F975F7;
   padding-top: 20px;
   text-align: center;
 }
 .bowl2Frame10 {
+  color: #F975F7;
+  filter: drop-shadow(2px 2px 20px #f008b7);
   grid-column-start: 2;
   grid-row-start: 1;
-  border-left: 2px solid black;
-  border-bottom: 2px solid black;
+  border-left: 2px solid  #F975F7;
+  border-bottom: 2px solid  #F975F7;
   height: 30px;
   width: 44px;
   padding-top: 20px;
   text-align: center;
 }
 .bowl3Frame10{
+  color: #F975F7;
+  filter: drop-shadow(2px 2px 20px #f008b7);
   grid-column-start: 3;
   grid-row-start: 1;
-  border-left: 2px solid black;
-  border-bottom: 2px solid black;
+  border-left: 2px solid  #F975F7;
+  border-bottom: 2px solid  #F975F7;
   height: 30px;
   width: 44px;
   text-align: center;
@@ -107,6 +131,8 @@ height: 400px;
 }
 
 .score {
+  color: #F975F7;
+  filter: drop-shadow(2px 2px 20px #f008b7);
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 2;
