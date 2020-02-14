@@ -35,7 +35,7 @@ const App = () => {
       //if there is a strike
       if (scoreboardToCheck[i][0] === 10) {
         //if there is a strike on the 10th frame, first bowl
-        if (currentFrame === 9 && scoreboardToCheck[9][0] === 'X') {
+        if (currentFrame === 9 && scoreboardToCheck[9][0] === 10) {
           scoreboardToCheck[9][0] = 'X'
         }
         //if there is a strike on any frame by the 10th
@@ -44,11 +44,12 @@ const App = () => {
         scoreboardToCheck[i][0] = null
         }
       }
+      //spare on any frame
+      if (scoreboardToCheck[i][0] + scoreboardToCheck[i][1] === 10) scoreboardToCheck[i][1] = '/'
       //if there is a gutter ball on the first or second bowl of a frame
       if (scoreboardToCheck[i][0] === 0) scoreboardToCheck[i][0] = '-'
       if (scoreboardToCheck[i][1] === 0) scoreboardToCheck[i][1] = '-'
-      //spare on any frame
-      if (scoreboardToCheck[i][0] + scoreboardToCheck[i][1] === 10) scoreboardToCheck[i][1] = '/'
+      
       if (currentFrame === 9 && scoreboardToCheck[9][0] === 'X') {
           //if there is a strike on the 10th frame, first & second bowl
           if (scoreboardToCheck[9][0] === 'X' && scoreboard[9][1] === 10) scoreboard[9][1] === 'X'
