@@ -29,6 +29,7 @@
   color: #F975F7;
   transform:rotate(-15deg);
   filter: drop-shadow(2px 2px 20px #f008b7);
+  -webkit-text-stroke: 1px #f008b7;
 }
 
 .bowlButton:hover {
@@ -47,12 +48,10 @@ background-color: black;
   display: grid;
   text-align: center;
   color: #F975F7;
-  filter: drop-shadow(2px 2px 20px #f008b7);
 }
 
 .frame {
   color: #F975F7;
-  filter: drop-shadow(2px 2px 20px #f008b7);
   display: grid;
   border-left: solid 2px  #F975F7;
   border-top: solid 2px  #F975F7;
@@ -64,7 +63,6 @@ background-color: black;
 }
 .frame10 {
   color: #F975F7;
-  filter: drop-shadow(2px 2px 20px #f008b7);
   display: grid;
   border: solid 2px  #F975F7;
   height: 100px;
@@ -74,7 +72,6 @@ background-color: black;
 }
 .bowl1 {
   color: #F975F7;
-  filter: drop-shadow(2px 2px 20px #f008b7);
   grid-column-start: 1;
   grid-row-start: 1;
   height: 30px;
@@ -85,7 +82,6 @@ background-color: black;
 
 .bowl2 {
   color: #F975F7;
-  filter: drop-shadow(2px 2px 20px #f008b7);
   grid-column-start: 2;
   grid-row-start: 1;
   border-left: 2px solid  #F975F7;
@@ -97,7 +93,6 @@ background-color: black;
 }
 .bowl1Frame10 {
   color: #F975F7;
-  filter: drop-shadow(2px 2px 20px #f008b7);
   grid-column-start: 1;
   grid-row-start: 1;
   height: 30px;
@@ -108,7 +103,6 @@ background-color: black;
 }
 .bowl2Frame10 {
   color: #F975F7;
-  filter: drop-shadow(2px 2px 20px #f008b7);
   grid-column-start: 2;
   grid-row-start: 1;
   border-left: 2px solid  #F975F7;
@@ -120,7 +114,6 @@ background-color: black;
 }
 .bowl3Frame10{
   color: #F975F7;
-  filter: drop-shadow(2px 2px 20px #f008b7);
   grid-column-start: 3;
   grid-row-start: 1;
   border-left: 2px solid  #F975F7;
@@ -133,7 +126,6 @@ background-color: black;
 
 .score {
   color: #F975F7;
-  filter: drop-shadow(2px 2px 20px #f008b7);
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 2;
