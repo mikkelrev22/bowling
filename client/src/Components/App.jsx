@@ -27,6 +27,20 @@ const App = () => {
   const [scoreboard, setScore] = useState([[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null]])
   const [currentFrame, setCurrentFrame]  = useState(0)
   const [scoreboardToRender, setScoreboardToRender] = useState([[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null, null]])
+  const [cheer, setCheer] = useState('')
+
+  const displayStrikeCheer = () => {
+    setCheer('Strike!')
+  }
+
+  const displaySpareCheer = () => {
+    setCheer('Spare!')
+  }
+
+  // const displayCheer = () => {
+  //   const cheerArray = []
+  //   setCheer()
+  // }
 
   const renderScoreboard = (newScoreboard) => {
     let scoreboardToCheck = JSON.parse(JSON.stringify(newScoreboard))
@@ -45,7 +59,10 @@ const App = () => {
         }
       }
       //spare on any frame
-      if (scoreboardToCheck[i][0] + scoreboardToCheck[i][1] === 10) scoreboardToCheck[i][1] = '/'
+      if (scoreboardToCheck[i][0] + scoreboardToCheck[i][1] === 10) {
+        scoreboardToCheck[i][1] = '/'
+        displaySpareCheer()
+      }
       //if there is a gutter ball on the first or second bowl of a frame
       if (scoreboardToCheck[i][0] === 0) scoreboardToCheck[i][0] = '-'
       if (scoreboardToCheck[i][1] === 0) scoreboardToCheck[i][1] = '-'
@@ -198,6 +215,7 @@ const App = () => {
           calculateScoreBowl1(newScoreboard, bowl1Score)
           setScore(newScoreboard)
           renderScoreboard(newScoreboard)
+          displayStrikeCheer()
           if (currentFrame !== 9) {
             setCurrentFrame(currentFrame + 1)
           }
@@ -224,7 +242,9 @@ const App = () => {
       </div>
     </div>
     <div className="bowlButtonContainer">
+    <div className="cheerContainer1">{cheer}></div>
     <button className="bowlButton" onClick={bowl}>Click to bowl!</button>
+      <div className="cheerContainer2">{cheer}</div>
     </div>
   </div>
   )
