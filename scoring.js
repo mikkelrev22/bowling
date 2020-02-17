@@ -105,13 +105,3 @@ exports.playAGame = () => {
   }
   return score
 }
-// playAGame()
-
-// module.exports = {
-//   Bowl: bowl,
-//   Scoreboard: scoreboard,
-//   CalculateTotalScore: calculateTotalScore,
-//   BowlAFrame: bowlAFrame,
-//   CalculateFrameScore: calculateFrameScore,
-//   PlayAGame: playAGame
-// }
