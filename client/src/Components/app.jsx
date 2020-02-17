@@ -29,6 +29,12 @@ const App = () => {
   const [scoreboardToRender, setScoreboardToRender] = useState([[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null, null]])
   const [cheer, setCheer] = useState('')
 
+  const endGame = () => {
+    setCheer('Game Over!')
+    setTimeout(()=>{setCheer(`Your score was ${scoreboard[9][3]}`)}, 2500)
+    setTimeout(()=>{location.reload}, 10000)
+  }
+
   const displayStrikeCheer = () => {
     setCheer('Strike!')
     removeCheer()
@@ -183,7 +189,7 @@ const App = () => {
           bowl3_Frame10()
         }
         else {
-          console.log('endGame')
+          endGame()
         }
       }
       //second bowl
