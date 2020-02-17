@@ -31,9 +31,9 @@ const App = () => {
 
   const endGame = () => {
     setCheer('Game Over!')
-    setTimeout(()=>{scoreboard[9][2] > 110 ? setCheer(`Your score was ${scoreboard[9][2]}` + '\n Good job!') : setCheer(`Your score was ${scoreboard[9][2]}` + '\n Better luck next time!') 
+    setTimeout(()=>{scoreboard[9][2] > 110 ? setCheer(`Your score was ${scoreboard[9][2]}.` + '\n Good job!') : setCheer(`Your score was ${scoreboard[9][2]}.` + '\n Better luck next time!') 
     }, 2500)
-    setTimeout(()=>{location.reload}, 10000)
+    setTimeout(()=>{location.reload}, 5000)
   }
 
   const displayStrikeCheer = () => {
