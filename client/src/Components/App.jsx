@@ -160,6 +160,7 @@ const App = () => {
   }
 
   const bowl2_Frame10 = () => {
+    //can refacdtor to be more specific to Frame10
     //check for a strike on previous bowl
     if (scoreboard[currentFrame][0] === 10) {
       let bowl2Score = Math.floor(Math.random()*(11))
