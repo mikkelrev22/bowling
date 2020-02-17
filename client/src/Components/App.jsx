@@ -31,7 +31,8 @@ const App = () => {
 
   const endGame = () => {
     setCheer('Game Over!')
-    setTimeout(()=>{setCheer(`Your score was ${scoreboard[9][3]}`)}, 2500)
+    setTimeout(()=>{scoreboard[9][2] > 110 ? setCheer(`Your score was ${scoreboard[9][2]}` + '\n Good job!') : setCheer(`Your score was ${scoreboard[9][2]}` + '\n Better luck next time!') 
+    }, 2500)
     setTimeout(()=>{location.reload}, 10000)
   }
 
