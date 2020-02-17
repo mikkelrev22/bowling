@@ -2,8 +2,6 @@ const express = require('express')
 const app = express()
 const port = 7666
 
-
-
 app.use(express.static(__dirname + '/client/dist'))
 
 app.use((err, req, res, next)=>{
