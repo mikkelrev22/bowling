@@ -6,9 +6,11 @@
   margin-top: 50px;
   background-color: black;
 }
+
 body { 
   background-color: black;
 }
+
 .bowlButton {
   background-color: black;
   border-radius: 50%;
@@ -24,7 +26,7 @@ body {
   height: 400px;
   width: 394px;
   text-align: center;
-  padding: 125px 0px 0px 0px;
+  padding: 125px 0px 50px 50px;
   font-family: 'Mr Dafoe', cursive;
   font-style: italic;
   color: #F975F7;
@@ -62,6 +64,7 @@ background-color: black;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
 }
+
 .frame10 {
   color: #F975F7;
   display: grid;
@@ -71,6 +74,7 @@ background-color: black;
   grid-template-columns: 44px 44px 44px;
   grid-template-rows: auto auto;
 }
+
 .bowl1 {
   color: #F975F7;
   grid-column-start: 1;
@@ -92,6 +96,7 @@ background-color: black;
   text-align: center;
   padding-top: 20px;
 }
+
 .bowl1Frame10 {
   color: #F975F7;
   grid-column-start: 1;
@@ -102,6 +107,7 @@ background-color: black;
   padding-top: 20px;
   text-align: center;
 }
+
 .bowl2Frame10 {
   color: #F975F7;
   grid-column-start: 2;
@@ -113,6 +119,7 @@ background-color: black;
   padding-top: 20px;
   text-align: center;
 }
+
 .bowl3Frame10{
   color: #F975F7;
   grid-column-start: 3;

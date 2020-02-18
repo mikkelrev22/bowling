@@ -153,12 +153,24 @@ const App = () => {
   }
 
   const bowl3_Frame10 = () => {
+    //found an error: if previous bowl was not a strike, pins must remain
+    //add conditional logic for bowl3 of frame 10
+    if (scoreboard[9][2] === 10) {
     let bowl3Score = Math.floor(Math.random()*(11))
     let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
     newScoreboard[currentFrame][3] = bowl3Score
     newScoreboard[currentFrame][2] += newScoreboard[currentFrame][3]
     setScore(newScoreboard)
     renderScoreboard(newScoreboard)
+    }
+    else {
+      let bowl3Score = Math.floor(Math.random()*(11-scoreboard[currentFrame][1]))
+      let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
+      newScoreboard[currentFrame][3] = bowl3Score
+      newScoreboard[currentFrame][2] += newScoreboard[currentFrame][3]
+      setScore(newScoreboard)
+      renderScoreboard(newScoreboard)
+    }
   }
 
   const bowl2_Frame10 = () => {
