@@ -189,7 +189,6 @@ const App = () => {
       newScoreboard[currentFrame][2] += newScoreboard[currentFrame][3]
     }
     setScore(newScoreboard)
-    // renderScoreboard(scoreboardToRender, scoreboard)
   }
 
   const bowl2_Frame10 = () => {
@@ -208,7 +207,6 @@ const App = () => {
     }
     checkForStrikesBowl2(newScoreboard)
     setScore(newScoreboard)
-    // renderScoreboard(scoreboardToRender, scoreboard)
   }
 
   const bowl = () => {
@@ -234,8 +232,6 @@ const App = () => {
           newScoreboard[currentFrame][2] += newScoreboard[currentFrame][1]
           checkForStrikesBowl2(newScoreboard)
           setScore(newScoreboard)
-          // renderScoreboard(scoreboardToRender, scoreboard)
-          // setCurrentFrame(currentFrame + 1)
           if (newScoreboard[currentFrame][0] + newScoreboard[currentFrame][1] === 10) {
             displaySpareCheer()
           }
@@ -251,14 +247,10 @@ const App = () => {
           newScoreboard[currentFrame][0] = 10
           newScoreboard[currentFrame][1] = null
           displayStrikeCheer()
-          // if (currentFrame !== 9) {
-          //   setCurrentFrame(currentFrame + 1)
-          // }
         }
           //in all cases
           calculateScoreBowl1(newScoreboard, bowl1Score)
           setScore(newScoreboard)
-          // renderScoreboard(scoreboardToRender, scoreboard)
       }
   }
 
