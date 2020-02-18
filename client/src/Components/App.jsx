@@ -71,7 +71,7 @@ const App = () => {
     scoreboardToRenderDeepCopy[currentFrame][0] = scoreboard[currentFrame][0]
     scoreboardToRenderDeepCopy[currentFrame][1] = scoreboard[currentFrame][1]
     //get bowl3 score if it exists
-    if (scoreboard[9][3]) {
+    if (scoreboard[9][3] !== null) {
       scoreboardToRenderDeepCopy[9][3] = scoreboard[9][3]
     }
     //if there is a strike
@@ -239,7 +239,8 @@ const App = () => {
       }
       //first bowl
       else if (scoreboard[currentFrame][0] === null) {
-        let bowl1Score = Math.floor(Math.random()*11)
+        // let bowl1Score = Math.floor(Math.random()*11)
+        let bowl1Score = 10
         let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
         newScoreboard[currentFrame][0] = bowl1Score
         //in case of a strike
