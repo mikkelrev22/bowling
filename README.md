@@ -8,6 +8,6 @@ ___
 - the game is scored and ends in the same way a normal game of bowling would be scored and end
 ___
 ## To Do
-- looping vs static replacement for render scoreboard
+- static replacement for render scoreboard
 - mobile compatibility
 - deploy to the cloud
