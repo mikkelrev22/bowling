@@ -1,4 +1,4 @@
-# Bowling
+# Bowling :bowling:
 ___
 ## Purpose
 - creating app to simulate bowling scoring
@@ -8,6 +8,5 @@ ___
 - the game is scored and ends in the same way a normal game of bowling would be scored and end
 ___
 ## To Do
-- static replacement for render scoreboard
 - mobile compatibility
 - deploy to the cloud
