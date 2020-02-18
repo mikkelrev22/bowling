@@ -53,45 +53,49 @@ const App = () => {
 
   const renderScoreboard = (newScoreboard) => {
     let scoreboardToCheck = JSON.parse(JSON.stringify(newScoreboard))
-    let i = 0
-    while (i <= currentFrame) {
+    if (currentFrame > -1) {
+      console.log('check0')
       //if there is a strike
-      if (scoreboardToCheck[i][0] === 10) {
+      if (scoreboardToCheck[currentFrame][0] === 10) {
+        console.log('check1')
         //if there is a strike on the 10th frame, first bowl
-        if (currentFrame === 9 && scoreboardToCheck[9][0] === 10) {
+        if (currentFrame === 9) {
+          console.log('check2')
           scoreboardToCheck[9][0] = 'X'
         }
         //if there is a strike on any frame by the 10th
         else {
-        scoreboardToCheck[i][1] = 'X'
-        scoreboardToCheck[i][0] = null
+          console.log('check3')
+        scoreboardToRender[currentFrame][1] = 'X'
+        scoreboardToCheck[currentFrame][0] = null
         }
       }
       //spare on any frame
-      if (scoreboardToCheck[i][0] + scoreboardToCheck[i][1] === 10) {
-        scoreboardToCheck[i][1] = '/'
+      if (scoreboardToCheck[currentFrame][0] + scoreboardToCheck[currentFrame][1] === 10 && scoreboardToCheck[currentFrame][0] !== 10) {
+        scoreboardToCheck[currentFrame][1] = '/'
       }
       //if there is a gutter ball on the first or second bowl of a frame
-      if (scoreboardToCheck[i][0] === 0) scoreboardToCheck[i][0] = '-'
-      if (scoreboardToCheck[i][1] === 0) scoreboardToCheck[i][1] = '-'
+      if (scoreboardToCheck[currentFrame][0] === 0) scoreboardToCheck[currentFrame][0] = '-'
+      if (scoreboardToCheck[currentFrame][1] === 0) scoreboardToCheck[currentFrame][1] = '-'
       
-      if (currentFrame === 9 && scoreboardToCheck[9][0] === 'X') {
+      if (currentFrame === 9 && scoreboardToRender[9][0] === 'X') {
+
           //if there is a strike on the 10th frame, first & second bowl
-          if (scoreboardToCheck[9][0] === 'X' && scoreboard[9][1] === 10) scoreboardToCheck[9][1] === 'X'
+          if (scoreboardToCheck[9][1] === 10) scoreboardToCheck[9][1] = 'X'
           //if there is a strike and then a spare
-          if (scoreboardToCheck[9][0] === 'X' && scoreboard[9][1] !== 'X' && scoreboard[9][1] + scoreboard[9][3] === 10) {
-            scoreboardToCheck[9][3] === '/'
+         
+          if (scoreboardToRender[9][1] !== 'X' && scoreboardToCheck[9][1] + scoreboardToCheck[9][3] === 10) {
+            scoreboardToCheck[9][3] = '/'
           }
           //if there are three strikes
-          if (scoreboardToCheck[9][0] === 'X' && scoreboard[9][1] === 'X' && scoreboard[9][3] === 10) scoreboardToCheck[9][3] === 'X'
+          if (scoreboardToRender[9][0] === 'X' && scoreboardToRender[9][1] === 'X' && scoreboardToCheck[9][3] === 10) scoreboardToCheck[9][3] = 'X'
       }
       if (currentFrame === 9) {
         //if there is a spare and then a strike on the 10th frame
-        if (scoreboardToCheck[9][1] === '/' && scoreboard[9][3] === 10) scoreboardToCheck[9][3] = 'X'
+        if (scoreboardToRender[9][1] === '/' && scoreboard[9][3] === 10) scoreboardToCheck[9][3] = 'X'
         //if there is a gutter ball on the 3rd bowl of the the 10th frame
         if (scoreboardToCheck[9][3] === 0) scoreboardToCheck[9][3] = '-'
       }
-      i++
     }
       setScoreboardToRender(scoreboardToCheck)
   }
@@ -153,7 +157,7 @@ const App = () => {
   }
 
   const bowl3_Frame10 = () => {
-    if (scoreboard[9][2] === 10) {
+    if (scoreboard[9][1] === 10) {
     let bowl3Score = Math.floor(Math.random()*(11))
     let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
     newScoreboard[currentFrame][3] = bowl3Score
@@ -175,7 +179,9 @@ const App = () => {
     //can refacdtor to be more specific to Frame10
     //check for a strike on previous bowl
     if (scoreboard[currentFrame][0] === 10) {
-      let bowl2Score = Math.floor(Math.random()*(11))
+      //test
+      // let bowl2Score = Math.floor(Math.random()*(11))
+      let bowl2Score = 10
       let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
       newScoreboard[currentFrame][1] = bowl2Score
       newScoreboard[currentFrame][2] += newScoreboard[currentFrame][1]
@@ -227,7 +233,9 @@ const App = () => {
       }
       //first bowl
       else if (scoreboard[currentFrame][0] === null) {
-        let bowl1Score = Math.floor(Math.random()*11)
+        //test
+        // let bowl1Score = Math.floor(Math.random()*11)
+        let bowl1Score = 10
         let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
         newScoreboard[currentFrame][0] = bowl1Score
         //in case of a strike
