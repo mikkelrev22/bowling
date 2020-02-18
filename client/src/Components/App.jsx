@@ -77,17 +77,17 @@ const App = () => {
       
       if (currentFrame === 9 && scoreboardToCheck[9][0] === 'X') {
           //if there is a strike on the 10th frame, first & second bowl
-          if (scoreboardToCheck[9][0] === 'X' && scoreboard[9][1] === 10) scoreboard[9][1] === 'X'
+          if (scoreboardToCheck[9][0] === 'X' && scoreboard[9][1] === 10) scoreboardToCheck[9][1] === 'X'
           //if there is a strike and then a spare
           if (scoreboardToCheck[9][0] === 'X' && scoreboard[9][1] !== 'X' && scoreboard[9][1] + scoreboard[9][3] === 10) {
-            scoreboard[9][3] === '/'
+            scoreboardToCheck[9][3] === '/'
           }
           //if there are three strikes
-          if (scoreboardToCheck[9][0] === 'X' && scoreboard[9][1] === 'X' && scoreboard[3] === 10) scoreboard[3] === 'X'
+          if (scoreboardToCheck[9][0] === 'X' && scoreboard[9][1] === 'X' && scoreboard[9][3] === 10) scoreboardToCheck[9][3] === 'X'
       }
       if (currentFrame === 9) {
         //if there is a spare and then a strike on the 10th frame
-        if (scoreboardToCheck[9][1] === '/' && scoreboard[9][3] === 10) scoreboard[9][3] = 'X'
+        if (scoreboardToCheck[9][1] === '/' && scoreboard[9][3] === 10) scoreboardToCheck[9][3] = 'X'
         //if there is a gutter ball on the 3rd bowl of the the 10th frame
         if (scoreboardToCheck[9][3] === 0) scoreboardToCheck[9][3] = '-'
       }
