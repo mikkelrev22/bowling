@@ -1,4 +1,4 @@
-import React, { useState }  from 'react'
+import React, { useState, useEffect }  from 'react'
 
 const Frame = ({bowl1, bowl2, currentScore, frameNumber}) => {
 return <div className="frameContianer">
@@ -29,6 +29,10 @@ const App = () => {
   const [scoreboardToRender, setScoreboardToRender] = useState([[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null, null]])
   const [cheer, setCheer] = useState('')
 
+  useEffect(()=>{
+    renderScoreboard(scoreboardToRender, scoreboard)
+  }, [scoreboard])
+
   const endGame = () => {
     setCheer('Game Over!')
     setTimeout(()=>{scoreboard[9][2] > 110 ? setCheer(`Your score was ${scoreboard[9][2]}.` + '\n Good job!') : setCheer(`Your score was ${scoreboard[9][2]}.` + '\n Better luck next time!') 
@@ -53,52 +57,52 @@ const App = () => {
 
   const renderScoreboard = (scoreboardToRender, scoreboard) => {
     //need to consider using effectHook
-    console.log(scoreboardToRender, scoreboard)
+    
     let scoreboardToRenderDeepCopy = JSON.parse(JSON.stringify(scoreboardToRender))
     let scoreboardToGetScoreFrom = JSON.parse(JSON.stringify(scoreboard))
     
-    if (currentFrame > -1) {
-      scoreboardToRenderDeepCopy[currentFrame][0] = scoreboardToGetScoreFrom[currentFrame][0]
-      scoreboardToRenderDeepCopy[currentFrame][1] = scoreboardToGetScoreFrom[currentFrame][1]
-      if (scoreboardToGetScoreFrom[currentFrame][3]) {
+    //issue is with currentFrame number
+    
+    //getting bowl1, bowl2, bowl3 scores from deep copy of scoreboard
+    scoreboardToRenderDeepCopy[currentFrame][0] = scoreboardToGetScoreFrom[currentFrame][0]
+    console.log(scoreboardToRenderDeepCopy[currentFrame][1], scoreboardToGetScoreFrom[currentFrame][1])
+    scoreboardToRenderDeepCopy[currentFrame][1] = scoreboardToGetScoreFrom[currentFrame][1]
+    if (scoreboardToGetScoreFrom[currentFrame][3]) {
         scoreboardToRenderDeepCopy[currentFrame][3] = scoreboardToGetScoreFrom[currentFrame][3]
-      }
-      //if there is a strike
-      if (scoreboardToRenderDeepCopy[currentFrame][0] === 10 && currentFrame < 9) {
-        //if there is a strike on any frame by the 10th
-        scoreboardToRenderDeepCopy[currentFrame][1] = 'X'
-        scoreboardToRenderDeepCopy[currentFrame][0] = null
-      }  
-      //if there is a strike on the 10th frame, first bowl
-      if (scoreboardToRenderDeepCopy[currentFrame][0] === 10 && currentFrame === 9) {
+    }
+    //if there is a strike
+    if (scoreboardToRenderDeepCopy[currentFrame][0] === 10 && currentFrame < 9) {
+      //if there is a strike on any frame by the 10th
+      scoreboardToRenderDeepCopy[currentFrame][1] = 'X'
+      scoreboardToRenderDeepCopy[currentFrame][0] = null
+    }  
+    //if there is a strike on the 10th frame, first bowl
+    if (scoreboardToRenderDeepCopy[currentFrame][0] === 10 && currentFrame === 9) {
         scoreboardToRenderDeepCopy[currentFrame][0] = 'X'
-      }
-      //spare on any frame
-      if (scoreboardToRenderDeepCopy[currentFrame][0] + scoreboardToRenderDeepCopy[currentFrame][1] === 10 && scoreboardToRenderDeepCopy[currentFrame][0] !== 'X') {
+    }
+    //spare on any frame
+    if (scoreboardToRenderDeepCopy[currentFrame][0] + scoreboardToRenderDeepCopy[currentFrame][1] === 10 && scoreboardToRenderDeepCopy[currentFrame][0] !== 'X') {
         scoreboardToRenderDeepCopy[currentFrame][1] = '/'
-      }
-      //if there is a gutter ball on the first or second bowl of a frame
-      if (scoreboardToRenderDeepCopy[currentFrame][0] === 0) scoreboardToRenderDeepCopy[currentFrame][0] = '-'
-      if (scoreboardToRenderDeepCopy[currentFrame][1] === 0) scoreboardToRenderDeepCopy[currentFrame][1] = '-'
+    }
+    //if there is a gutter ball on the first or second bowl of a frame
+    if (scoreboardToRenderDeepCopy[currentFrame][0] === 0) scoreboardToRenderDeepCopy[currentFrame][0] = '-'
+    if (scoreboardToRenderDeepCopy[currentFrame][1] === 0) scoreboardToRenderDeepCopy[currentFrame][1] = '-'
       
-      if (currentFrame === 9 && scoreboardToRender[9][0] === 'X') {
-
-          //if there is a strike on the 10th frame, first & second bowl
-          if (scoreboardToRenderDeepCopy[9][1] === 10) scoreboardToRenderDeepCopy[9][1] = 'X'
-          //if there is a strike and then a spare
-         
-          if (scoreboardToRenderDeepCopy[9][1] !== 'X' && scoreboardToRenderDeepCopy[9][1] + scoreboardToRenderDeepCopy[9][3] === 10) {
-            scoreboardToRenderDeepCopy[9][3] = '/'
-          }
-          //if there are three strikes
-          if (scoreboardToRenderDeepCopy[9][0] === 'X' && scoreboardToRenderDeepCopy[9][1] === 'X' && scoreboardToRenderDeepCopy[9][3] === 10) scoreboardToCheck[9][3] = 'X'
-      }
-      if (currentFrame === 9) {
-        //if there is a spare and then a strike on the 10th frame
-        if (scoreboardToRenderDeepCopy[9][1] === '/' && scoreboardToRenderDeepCopy[9][3] === 10) scoreboardToRenderDeepCopy[9][3] = 'X'
-        //if there is a gutter ball on the 3rd bowl of the the 10th frame
-        if (scoreboardToRenderDeepCopy[9][3] === 0) scoreboardToRenderDeepCopy[9][3] = '-'
-      }
+    if (currentFrame === 9 && scoreboardToRender[9][0] === 'X') {
+        //if there is a strike on the 10th frame, first & second bowl
+        if (scoreboardToRenderDeepCopy[9][1] === 10) scoreboardToRenderDeepCopy[9][1] = 'X'
+        //if there is a strike and then a spare
+        if (scoreboardToRenderDeepCopy[9][1] !== 'X' && scoreboardToRenderDeepCopy[9][1] + scoreboardToRenderDeepCopy[9][3] === 10) {
+          scoreboardToRenderDeepCopy[9][3] = '/'
+        }
+        //if there are three strikes
+        if (scoreboardToRenderDeepCopy[9][0] === 'X' && scoreboardToRenderDeepCopy[9][1] === 'X' && scoreboardToRenderDeepCopy[9][3] === 10) scoreboardToCheck[9][3] = 'X'
+    }
+    if (currentFrame === 9) {
+      //if there is a spare and then a strike on the 10th frame
+      if (scoreboardToRenderDeepCopy[9][1] === '/' && scoreboardToRenderDeepCopy[9][3] === 10) scoreboardToRenderDeepCopy[9][3] = 'X'
+      //if there is a gutter ball on the 3rd bowl of the the 10th frame
+      if (scoreboardToRenderDeepCopy[9][3] === 0) scoreboardToRenderDeepCopy[9][3] = '-'
     }
       scoreboardToRenderDeepCopy[currentFrame][2] = scoreboardToGetScoreFrom[currentFrame][2]
       setScoreboardToRender(scoreboardToRenderDeepCopy)
@@ -114,7 +118,7 @@ const App = () => {
     }
     //if this is the first frame
     else {
-    //make the first bowl the total score
+      //make the first bowl the total score
       newScoreboard[currentFrame][2] = bowl1Score
     }
   }
@@ -131,15 +135,15 @@ const App = () => {
       // in case of single strike (can still refactor w/ double strike case)
     if (newScoreboard[prevPrev]) {
       if (newScoreboard[previous][0] === 10 && newScoreboard[prevPrev][0] !== 10) {
-          newScoreboard[previous][2] += newScoreboard[currentFrame][0]
-        }
+        newScoreboard[previous][2] += newScoreboard[currentFrame][0]
+      }
         // in case of double strike
       if (newScoreboard[previous][0] === 10 && newScoreboard[prevPrev][0] === 10) {
           newScoreboard[prevPrev][2] += newScoreboard[currentFrame][0]
           newScoreboard[previous][2] = newScoreboard[prevPrev][2] + newScoreboard[previous][0] + newScoreboard[currentFrame][0]
-        }
       }
     }
+  }
   
   const checkForStrikesBowl2 = (newScoreboard) => {
     //check for strikes in the previous frame 
@@ -173,7 +177,7 @@ const App = () => {
       newScoreboard[currentFrame][2] += newScoreboard[currentFrame][3]
     }
     setScore(newScoreboard)
-    renderScoreboard(scoreboardToRender, scoreboard)
+    // renderScoreboard(scoreboardToRender, scoreboard)
   }
 
   const bowl2_Frame10 = () => {
@@ -192,7 +196,7 @@ const App = () => {
     }
     checkForStrikesBowl2(newScoreboard)
     setScore(newScoreboard)
-    renderScoreboard(scoreboardToRender, scoreboard)
+    // renderScoreboard(scoreboardToRender, scoreboard)
   }
 
   const bowl = () => {
@@ -218,7 +222,7 @@ const App = () => {
           newScoreboard[currentFrame][2] += newScoreboard[currentFrame][1]
           checkForStrikesBowl2(newScoreboard)
           setScore(newScoreboard)
-          renderScoreboard(scoreboardToRender, scoreboard)
+          // renderScoreboard(scoreboardToRender, scoreboard)
           setCurrentFrame(currentFrame + 1)
           if (newScoreboard[currentFrame][0] + newScoreboard[currentFrame][1] === 10) {
             displaySpareCheer()
@@ -242,7 +246,7 @@ const App = () => {
           //in all cases
           calculateScoreBowl1(newScoreboard, bowl1Score)
           setScore(newScoreboard)
-          renderScoreboard(scoreboardToRender, scoreboard)
+          // renderScoreboard(scoreboardToRender, scoreboard)
       }
   }
 
