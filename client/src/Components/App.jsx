@@ -108,6 +108,7 @@ const App = () => {
       //if there is a gutter ball on the 3rd bowl of the the 10th frame
       if (scoreboardToRenderDeepCopy[9][3] === 0) scoreboardToRenderDeepCopy[9][3] = '-'
     }
+    //setState with new scoreboard to be mapped
     setScoreboardToRender(scoreboardToRenderDeepCopy)
     //if bowl1 strike and not 10th frame, setCurrent Frame to next
     if (scoreboard[currentFrame][0] === 10 && currentFrame !== 9) {
