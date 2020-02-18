@@ -52,6 +52,7 @@ const App = () => {
   }
 
   const renderScoreboard = (scoreboardToRender, scoreboard) => {
+    //need to consider using effectHook
     console.log(scoreboardToRender, scoreboard)
     let scoreboardToRenderDeepCopy = JSON.parse(JSON.stringify(scoreboardToRender))
     let scoreboardToGetScoreFrom = JSON.parse(JSON.stringify(scoreboard))
