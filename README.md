@@ -19,3 +19,14 @@ ___
 - clean up code
 - mobile compatibility?
 - deploy to the cloud
+___
+## Thanks in no particular order to: 
+- Patrick Bennett
+- Matthew Yee
+- Alex Cravalho
+- Victor Diez-Fugitt
+- Daniel Rowe
+- Jakub Svec
+- Cade Cameron
+- Andy Chung
+- Any one else gave me advice on this project
