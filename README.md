@@ -21,12 +21,12 @@ ___
 - deploy to the cloud
 ___
 ## Thanks in no particular order to: 
-- Patrick Bennett
-- Matthew Yee
-- Alex Cravalho
-- Victor Diez-Fugitt
-- Daniel Rowe
-- Jakub Svec
-- Cade Cameron
-- Andy Chung
+- Patrick Bennett: styling with CSS grid
+- Matthew Yee: tips on methods to use
+- Alex Cravalho: tips on what to put in state
+- Victor Diez-Fugitt: general
+- Daniel Rowe: tips on what to put in state
+- Jakub Svec: need for deep copies
+- Cade Cameron: styling the button
+- Andy Chung: 초코파이처럼 情 넘치고 있어서  
 - Any one else gave me advice on this project
