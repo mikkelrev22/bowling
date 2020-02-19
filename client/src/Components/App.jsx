@@ -66,13 +66,17 @@ const App = () => {
       scoreboardToRenderDeepCopy[currentFrame-2][2] = scoreboard[currentFrame-2][2]
     }
     //set score of current frame
-    scoreboardToRenderDeepCopy[currentFrame][2] = scoreboard[currentFrame][2]
+    if (scoreboard[0][0] !== null) {
+      scoreboardToRenderDeepCopy[currentFrame][2] = scoreboard[currentFrame][2]
+    }
     //getting bowl1 & bowl2 scores from deep copy of scoreboard
     scoreboardToRenderDeepCopy[currentFrame][0] = scoreboard[currentFrame][0]
     scoreboardToRenderDeepCopy[currentFrame][1] = scoreboard[currentFrame][1]
     //get bowl3 score if it exists
-    if (scoreboard[9][3] !== null) {
+    if (currentFrame === 9 && scoreboard[9][3] !== null) {
+      if (scoreboard[9][3] > -1) {
       scoreboardToRenderDeepCopy[9][3] = scoreboard[9][3]
+      }
     }
     //if there is a strike
     if (scoreboardToRenderDeepCopy[currentFrame][0] === 10 && currentFrame < 9) {
@@ -96,7 +100,8 @@ const App = () => {
       //if there is a strike on the 10th frame, first & second bowl
       if (scoreboardToRenderDeepCopy[9][1] === 10) scoreboardToRenderDeepCopy[9][1] = 'X'
       //if there is a strike and then a spare
-      if (scoreboardToRenderDeepCopy[9][1] !== 'X' && scoreboardToRenderDeepCopy[9][1] + scoreboardToRenderDeepCopy[9][3] === 10) {
+      if (currentFrame ===9) console.log(scoreboard[9][1], scoreboard[9][3], scoreboard[9][1] + scoreboard[9][3])
+      if (scoreboardToRenderDeepCopy[9][1] !== 'X' && scoreboard[9][1] + scoreboard[9][3] === 10) {
         scoreboardToRenderDeepCopy[9][3] = '/'
       }
       //if there are three strikes
@@ -212,7 +217,7 @@ const App = () => {
   const bowl = () => {
       //handle frame 10 bowl 3
       if (currentFrame === 9 && scoreboard[currentFrame][1] !== null) {
-        if ((!scoreboard[9][3] && scoreboard[currentFrame][0] === 10) || (!scoreboard[9][3] && scoreboard[currentFrame][0] + scoreboard[currentFrame][1] === 10)) {
+        if ((scoreboard[9][3] === undefined && scoreboard[currentFrame][0] === 10) || (scoreboard[9][3] === undefined && scoreboard[currentFrame][0] + scoreboard[currentFrame][1] === 10)) {
           bowl3_Frame10()
         }
         else {
@@ -239,8 +244,7 @@ const App = () => {
       }
       //first bowl
       else if (scoreboard[currentFrame][0] === null) {
-        // let bowl1Score = Math.floor(Math.random()*11)
-        let bowl1Score = 10
+        let bowl1Score = Math.floor(Math.random()*11)
         let newScoreboard = JSON.parse(JSON.stringify(scoreboard))
         newScoreboard[currentFrame][0] = bowl1Score
         //in case of a strike
