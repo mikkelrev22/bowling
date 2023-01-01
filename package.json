@@ -22,17 +22,17 @@
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^8.3.0",
     "chai": "^4.2.0",
     "express": "^4.17.1",
-    "file-loader": "^5.0.2",
-    "image-webpack-loader": "^6.0.0",
+    "file-loader": "^6.2.0",
+    "image-webpack-loader": "^8.1.0",
     "mocha": "^7.0.1",
     "nodemon": "^2.0.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "url-loader": "^3.0.0",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "url-loader": "^4.1.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   }
 }
